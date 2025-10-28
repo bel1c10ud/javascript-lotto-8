@@ -41,6 +41,8 @@ class App {
     const winningNumbersStr = await Input.readWinningNumbersAsync();
     const winningNumbers = this.parseWinningNumbers(winningNumbersStr);
 
+    Output.printEmptyLine();
+
     const bonusNumbersStr = await Input.readBonusNumberAsync();
     const bonusNumber = this.parseBonusNumber(bonusNumbersStr);
 
