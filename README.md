@@ -121,8 +121,8 @@
   - [X] 입력받은 구입 금액 숫자 형식으로 변환
   - [X] 입력받은 당첨 번호 쉼표 `,` 기준으로 나누고 숫자 형식으로 변환
   - [X] 입력받은 보너스 번호 숫자 형식으로 변환
-- [ ] 금액 만큼 로또 생성하기
-  - [ ] `@woowacourse/mission-utils`의 `Random.pickUniqueNumbersInRange` 사용하여 로또 번호 생성하기
+- [X] 구입 금액 만큼 로또 발행하기
+  - [X] `@woowacourse/mission-utils`의 `Random.pickUniqueNumbersInRange` 사용하여 로또 번호 생성하기
 - [ ] 로또 번호 출력하기
 - [ ] 당첨 현황 파악 및 당첨 통계 출력
 - [ ] 수익률 계산 및 출력

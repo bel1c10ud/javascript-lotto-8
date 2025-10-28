@@ -1,4 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
+import Lotto from './Lotto.js'
 
 class App {
   async getBudgetAsync() {
@@ -44,9 +45,17 @@ class App {
     const budgetStr = await this.getBudgetAsync();
     const budget = this.parseBudget(budgetStr);
 
+    const lottos = [];
+
+    for (let i = 0; i < budget / 1000; i++) {
+      const randomNumbers = Random.pickUniqueNumbersInRange(1, 45, 6);
+      const lotto = new Lotto(randomNumbers);
+      lottos.push(lotto);
+    }
+
     const winningNumbersStr = await this.getWinningNumbersAsync();
     const winningNumbers = this.parseWinningNumbers(winningNumbersStr);
-    
+
     const bonusNumbersStr = await this.getBonusNumberAsync();
     const bonusNumber = this.parseBonusNumber(bonusNumbersStr);
   }
