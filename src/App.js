@@ -1,5 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
-import Lotto from './Lotto.js'
+import Lotto from "./Lotto.js";
 
 class App {
   async getBudgetAsync() {
@@ -13,7 +13,9 @@ class App {
 
   async getWinningNumbersAsync() {
     try {
-      const winningNumbers = await Console.readLineAsync("당첨 번호를 입력해 주세요.\n");
+      const winningNumbers = await Console.readLineAsync(
+        "당첨 번호를 입력해 주세요.\n"
+      );
       return winningNumbers;
     } catch (error) {
       throw new Error("[ERROR] 당첨 번호를 입력받던 중 오류가 발생했습니다.");
@@ -22,7 +24,9 @@ class App {
 
   async getBonusNumberAsync() {
     try {
-      const bonusNumber = await Console.readLineAsync("보너스 번호를 입력해 주세요.\n");
+      const bonusNumber = await Console.readLineAsync(
+        "보너스 번호를 입력해 주세요.\n"
+      );
       return bonusNumber;
     } catch (error) {
       throw new Error("[ERROR] 보너스 번호를 입력받던 중 오류가 발생했습니다.");
@@ -34,11 +38,19 @@ class App {
   }
 
   parseWinningNumbers(winningNumbersStr) {
-    return winningNumbersStr.split(',').map(Number);
+    return winningNumbersStr.split(",").map(Number);
   }
 
   parseBonusNumber(bonusNumberStr) {
     return Number(bonusNumberStr);
+  }
+
+  printEmptyLine() {
+    Console.print("");
+  }
+
+  printLottoCount(count) {
+    Console.print(`${count}개를 구입했습니다.`);
   }
 
   async run() {
@@ -52,6 +64,15 @@ class App {
       const lotto = new Lotto(randomNumbers);
       lottos.push(lotto);
     }
+
+    this.printEmptyLine();
+    this.printLottoCount(lottos.length);
+
+    lottos.forEach((lotto) => {
+      lotto.print();
+    });
+
+    this.printEmptyLine();
 
     const winningNumbersStr = await this.getWinningNumbersAsync();
     const winningNumbers = this.parseWinningNumbers(winningNumbersStr);
