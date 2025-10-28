@@ -1,3 +1,5 @@
+import { Console } from "@woowacourse/mission-utils";
+
 class App {
   async getBudgetAsync() {
     try {
@@ -26,10 +28,27 @@ class App {
     }
   }
 
+  parseBudget(budgetStr) {
+    return Number(budgetStr);
+  }
+
+  parseWinningNumbers(winningNumbersStr) {
+    return winningNumbersStr.split(',').map(Number);
+  }
+
+  parseBonusNumber(bonusNumberStr) {
+    return Number(bonusNumberStr);
+  }
+
   async run() {
     const budgetStr = await this.getBudgetAsync();
+    const budget = this.parseBudget(budgetStr);
+
     const winningNumbersStr = await this.getWinningNumbersAsync();
+    const winningNumbers = this.parseWinningNumbers(winningNumbersStr);
+    
     const bonusNumbersStr = await this.getBonusNumberAsync();
+    const bonusNumber = this.parseBonusNumber(bonusNumbersStr);
   }
 }
 
