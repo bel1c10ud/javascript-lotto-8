@@ -15,10 +15,12 @@ class Lotto {
   }
 
   print() {
-    Console.print(`[${this.#numbers.sort((a, b) => a - b).join(', ')}]`);
+    Console.print(`[${this.#numbers.sort((a, b) => a - b).join(", ")}]`);
   }
 
-  // TODO: 추가 기능 구현
+  getNumbers() {
+    return [...this.#numbers];
+  }
 }
 
 export default Lotto;
