@@ -1,14 +1,11 @@
 import { Random } from "@woowacourse/mission-utils";
 import Input from "./Input.js";
 import Output from "./Output.js";
+import Budget from "./Budget.js";
 import Lotto from "./Lotto.js";
 import LottoGame from "./LottoGame.js";
 
 class App {
-  parseBudget(budgetStr) {
-    return Number(budgetStr);
-  }
-
   parseWinningNumbers(winningNumbersStr) {
     return winningNumbersStr.split(",").map(Number);
   }
@@ -19,11 +16,11 @@ class App {
 
   async run() {
     const budgetStr = await Input.readBudgetAsync();
-    const budget = this.parseBudget(budgetStr);
+    const budget = new Budget(budgetStr);
 
     const lottos = [];
 
-    for (let i = 0; i < budget / 1000; i++) {
+    for (let i = 0; i < budget.lottoCount; i++) {
       const randomNumbers = Random.pickUniqueNumbersInRange(1, 45, 6);
       const lotto = new Lotto(randomNumbers);
       lottos.push(lotto);
@@ -50,7 +47,7 @@ class App {
     const result = lottoGame.getResult(lottos);
 
     Output.printResult(result);
-    Output.printRate(result["상금"], budget);
+    Output.printRate(result["상금"], budget.value);
   }
 }
 
