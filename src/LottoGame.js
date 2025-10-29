@@ -7,6 +7,14 @@ class LottoGame {
     this.#bonusNumber = bonusNumber;
   }
 
+  static prizeMap = {
+    "1등": 2000000000,
+    "2등": 30000000,
+    "3등": 1500000,
+    "4등": 50000,
+    "5등": 5000,
+  };
+
   getRank(lotto) {
     const lottoNumbers = lotto.getNumbers();
     const matchCount = lottoNumbers.filter((number) =>
@@ -30,7 +38,12 @@ class LottoGame {
       if (rank) result[rank]++;
     });
 
-    return result;
+    const prize = Object.entries(result).reduce(
+      (acc, [rank, count]) => acc + LottoGame.prizeMap[rank] * count,
+      0
+    );
+
+    return { ...result, 상금: prize };
   }
 }
 

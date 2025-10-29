@@ -48,8 +48,9 @@ class App {
 
     const lottoGame = new LottoGame(winningNumbers, bonusNumber);
     const result = lottoGame.getResult(lottos);
-    
+
     Output.printResult(result);
+    Output.printRate(result["상금"], budget);
   }
 }
 
