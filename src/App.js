@@ -4,13 +4,10 @@ import Output from "./Output.js";
 import Budget from "./Budget.js";
 import Lotto from "./Lotto.js";
 import WinningNumbers from "./WinningNumbers.js";
+import BonusNumber from "./BonusNumber.js";
 import LottoGame from "./LottoGame.js";
 
 class App {
-  parseBonusNumber(bonusNumberStr) {
-    return Number(bonusNumberStr);
-  }
-
   async run() {
     const budgetStr = await Input.readBudgetAsync();
     const budget = new Budget(budgetStr);
@@ -38,9 +35,9 @@ class App {
     Output.printEmptyLine();
 
     const bonusNumbersStr = await Input.readBonusNumberAsync();
-    const bonusNumber = this.parseBonusNumber(bonusNumbersStr);
+    const bonusNumber = new BonusNumber(bonusNumbersStr);
 
-    const lottoGame = new LottoGame(winningNumbers.value, bonusNumber);
+    const lottoGame = new LottoGame(winningNumbers.value, bonusNumber.value);
     const result = lottoGame.getResult(lottos);
 
     Output.printResult(result);

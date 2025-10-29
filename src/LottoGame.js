@@ -3,8 +3,15 @@ class LottoGame {
   #bonusNumber;
 
   constructor(winningNumbers, bonusNumber) {
+    this.#validate(winningNumbers, bonusNumber);
     this.#winningNumbers = winningNumbers;
     this.#bonusNumber = bonusNumber;
+  }
+
+  #validate(winningNumbers, bonusNumber) {
+    if (winningNumbers.includes(bonusNumber)) {
+      throw new Error("[ERROR] 당첨 번호와 보너스 번호는 중복 될 수 없습니다.");
+    }
   }
 
   static prizeMap = {
