@@ -10,7 +10,6 @@ class Output {
   }
 
   static printResult(result) {
-    Console.print("");
     Console.print("당첨 통계");
     Console.print("---");
     Console.print(`3개 일치 (5,000원) - ${result["5등"]}개`);
