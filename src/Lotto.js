@@ -1,4 +1,31 @@
+import { Random } from "@woowacourse/mission-utils";
+
 class Lotto {
+  static MIN_NUMBER = 1;
+  static MAX_NUMBER = 45;
+  static NUMBERS_COUNT = 6;
+  static PRICE = 1000;
+
+  static publish() {
+    const randomNumbers = Random.pickUniqueNumbersInRange(
+      Lotto.MIN_NUMBER,
+      Lotto.MAX_NUMBER,
+      Lotto.NUMBERS_COUNT
+    );
+    return new Lotto(randomNumbers);
+  }
+
+  static publishByBudget(budget) {
+    const tickets = [];
+    const count = budget / Lotto.PRICE;
+
+    for (let i = 0; i < count; i++) {
+      tickets.push(Lotto.publish());
+    }
+
+    return tickets;
+  }
+
   #numbers;
 
   constructor(numbers) {

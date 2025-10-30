@@ -1,4 +1,3 @@
-import { Random } from "@woowacourse/mission-utils";
 import Input from "./Input.js";
 import Output from "./Output.js";
 import Lotto from "./Lotto.js";
@@ -8,13 +7,7 @@ class App {
   async run() {
     const budget = await Input.getBudgetAsync();
 
-    const lottos = [];
-
-    for (let i = 0; i < budget / 1000; i++) {
-      const randomNumbers = Random.pickUniqueNumbersInRange(1, 45, 6);
-      const lotto = new Lotto(randomNumbers);
-      lottos.push(lotto);
-    }
+    const lottos = Lotto.publishByBudget(budget);
 
     Output.printPurchasedLottos(lottos);
 

@@ -1,12 +1,4 @@
 class LottoGame {
-  #winningNumbers;
-  #bonusNumber;
-
-  constructor(winningNumbers, bonusNumber) {
-    this.#winningNumbers = winningNumbers;
-    this.#bonusNumber = bonusNumber;
-  }
-
   static prizeMap = {
     RANK_1: 2000000000,
     RANK_2: 30000000,
@@ -23,8 +15,16 @@ class LottoGame {
   }
 
   static calculateReturnOnInvestment(prize, budget) {
-  return (prize / budget) * 100
-}
+    return (prize / budget) * 100;
+  }
+
+  #winningNumbers;
+  #bonusNumber;
+
+  constructor(winningNumbers, bonusNumber) {
+    this.#winningNumbers = winningNumbers;
+    this.#bonusNumber = bonusNumber;
+  }
 
   evaluateTicket(lotto) {
     const lottoNumbers = lotto.getNumbers();
