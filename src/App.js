@@ -7,15 +7,15 @@ class App {
   async run() {
     const budget = await Input.getBudgetAsync();
 
-    const lottos = LottoTicket.publishByBudget(budget);
+    const tickets = LottoTicket.publishByBudget(budget);
 
-    Output.printPurchasedLottos(lottos);
+    Output.printPurchasedLottos(tickets);
 
     const winningNumbers = await Input.getWinningNumbersAsync();
     const bonusNumber = await Input.getBonusNumberAsync(winningNumbers);
 
     const lottoGame = new LottoGame(winningNumbers, bonusNumber);
-    const result = lottoGame.evaluateTickets(lottos);
+    const result = lottoGame.evaluateTickets(tickets);
 
     const prize = LottoGame.calculatePrize(result);
     const returnOnInvestment = LottoGame.calculateReturnOnInvestment(

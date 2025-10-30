@@ -26,8 +26,8 @@ class LottoGame {
     this.#bonusNumber = bonusNumber;
   }
 
-  evaluateTicket(lotto) {
-    const lottoNumbers = lotto.getNumbers();
+  evaluateTicket(ticket) {
+    const lottoNumbers = ticket.getNumbers();
     const matchCount = lottoNumbers.filter((number) =>
       this.#winningNumbers.includes(number)
     ).length;
@@ -41,11 +41,11 @@ class LottoGame {
     return null;
   }
 
-  evaluateTickets(lottos) {
+  evaluateTickets(tickets) {
     const counts = { RANK_1: 0, RANK_2: 0, RANK_3: 0, RANK_4: 0, RANK_5: 0 };
 
-    lottos.forEach((lotto) => {
-      const rank = this.evaluateTicket(lotto);
+    tickets.forEach((ticket) => {
+      const rank = this.evaluateTicket(ticket);
       if (rank) counts[rank]++;
     });
 

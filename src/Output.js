@@ -5,11 +5,11 @@ class Output {
     Console.print(`${count}개를 구매했습니다.`);
   }
 
-  static printPurchasedLottos(lottos) {
-    Console.print(`${lottos.length}개를 구매했습니다.`);
+  static printPurchasedLottos(tickets) {
+    Console.print(`${tickets.length}개를 구매했습니다.`);
 
-    lottos.forEach((lotto) => {
-      const lottoNumbers = lotto.getNumbers();
+    tickets.forEach((ticket) => {
+      const lottoNumbers = ticket.getNumbers();
       Console.print(`[${lottoNumbers.join(", ")}]`);
     });
 
