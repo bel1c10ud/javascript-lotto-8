@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
 
-class Lotto {
+class LottoTicket {
   static MIN_NUMBER = 1;
   static MAX_NUMBER = 45;
   static NUMBERS_COUNT = 6;
@@ -8,19 +8,19 @@ class Lotto {
 
   static publish() {
     const randomNumbers = Random.pickUniqueNumbersInRange(
-      Lotto.MIN_NUMBER,
-      Lotto.MAX_NUMBER,
-      Lotto.NUMBERS_COUNT
+      LottoTicket.MIN_NUMBER,
+      LottoTicket.MAX_NUMBER,
+      LottoTicket.NUMBERS_COUNT
     );
-    return new Lotto(randomNumbers);
+    return new LottoTicket(randomNumbers);
   }
 
   static publishByBudget(budget) {
     const tickets = [];
-    const count = budget / Lotto.PRICE;
+    const count = budget / LottoTicket.PRICE;
 
     for (let i = 0; i < count; i++) {
-      tickets.push(Lotto.publish());
+      tickets.push(LottoTicket.publish());
     }
 
     return tickets;
@@ -52,4 +52,4 @@ class Lotto {
   }
 }
 
-export default Lotto;
+export default LottoTicket;
