@@ -1,11 +1,9 @@
-import { Console } from "@woowacourse/mission-utils";
-
 class Lotto {
   #numbers;
 
   constructor(numbers) {
     this.#validate(numbers);
-    this.#numbers = numbers;
+    this.#numbers = numbers.sort((a, b) => a - b);
   }
 
   #validate(numbers) {
@@ -20,10 +18,6 @@ class Lotto {
     if (numbers.some((number) => isNaN(number) || number < 1 || number > 45)) {
       throw new Error("[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.");
     }
-  }
-
-  print() {
-    Console.print(`[${this.#numbers.sort((a, b) => a - b).join(", ")}]`);
   }
 
   getNumbers() {

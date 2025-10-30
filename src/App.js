@@ -16,13 +16,7 @@ class App {
       lottos.push(lotto);
     }
 
-    Output.printLottoCount(lottos.length);
-
-    lottos.forEach((lotto) => {
-      lotto.print();
-    });
-
-    Output.printEmptyLine();
+    Output.printPurchasedLottos(lottos);
 
     const winningNumbers = await Input.getWinningNumbersAsync();
     const bonusNumber = await Input.getBonusNumberAsync(winningNumbers);
@@ -31,10 +25,13 @@ class App {
     const result = lottoGame.evaluateTickets(lottos);
 
     const prize = LottoGame.calculatePrize(result);
-    const returnOnInvestment = LottoGame.calculateReturnOnInvestment(prize, budget);
+    const returnOnInvestment = LottoGame.calculateReturnOnInvestment(
+      prize,
+      budget
+    );
 
     Output.printResult(result);
-    Output.printReturnOnInvestment(returnOnInvestment)
+    Output.printReturnOnInvestment(returnOnInvestment);
   }
 }
 

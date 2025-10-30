@@ -1,12 +1,19 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class Output {
-  static printEmptyLine() {
-    Console.print("");
-  }
-
   static printLottoCount(count) {
     Console.print(`${count}개를 구매했습니다.`);
+  }
+
+  static printPurchasedLottos(lottos) {
+    Console.print(`${lottos.length}개를 구매했습니다.`);
+
+    lottos.forEach((lotto) => {
+      const lottoNumbers = lotto.getNumbers();
+      Console.print(`[${lottoNumbers.join(", ")}]`);
+    });
+
+    Console.print("");
   }
 
   static printResult(result) {
@@ -22,7 +29,7 @@ class Output {
   }
 
   static printReturnOnInvestment(returnOnInvestment) {
-    Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`)
+    Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
   }
 }
 
