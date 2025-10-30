@@ -28,10 +28,13 @@ class App {
     const bonusNumber = await Input.getBonusNumberAsync(winningNumbers);
 
     const lottoGame = new LottoGame(winningNumbers, bonusNumber);
-    const result = lottoGame.getResult(lottos);
+    const result = lottoGame.evaluateTickets(lottos);
+
+    const prize = LottoGame.calculatePrize(result);
+    const returnOnInvestment = LottoGame.calculateReturnOnInvestment(prize, budget);
 
     Output.printResult(result);
-    Output.printRate(result["상금"], budget);
+    Output.printReturnOnInvestment(returnOnInvestment)
   }
 }
 

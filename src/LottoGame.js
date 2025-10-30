@@ -8,14 +8,25 @@ class LottoGame {
   }
 
   static prizeMap = {
-    "RANK_1": 2000000000,
-    "RANK_2": 30000000,
-    "RANK_3": 1500000,
-    "RANK_4": 50000,
-    "RANK_5": 5000,
+    RANK_1: 2000000000,
+    RANK_2: 30000000,
+    RANK_3: 1500000,
+    RANK_4: 50000,
+    RANK_5: 5000,
   };
 
-  getRank(lotto) {
+  static calculatePrize(result) {
+    return Object.entries(result).reduce(
+      (acc, [rank, count]) => acc + LottoGame.prizeMap[rank] * count,
+      0
+    );
+  }
+
+  static calculateReturnOnInvestment(prize, budget) {
+  return (prize / budget) * 100
+}
+
+  evaluateTicket(lotto) {
     const lottoNumbers = lotto.getNumbers();
     const matchCount = lottoNumbers.filter((number) =>
       this.#winningNumbers.includes(number)
@@ -30,20 +41,15 @@ class LottoGame {
     return null;
   }
 
-  getResult(lottos) {
-    const result = { "RANK_1": 0, "RANK_2": 0, "RANK_3": 0, "RANK_4": 0, "RANK_5": 0 };
+  evaluateTickets(lottos) {
+    const counts = { RANK_1: 0, RANK_2: 0, RANK_3: 0, RANK_4: 0, RANK_5: 0 };
 
     lottos.forEach((lotto) => {
-      const rank = this.getRank(lotto);
-      if (rank) result[rank]++;
+      const rank = this.evaluateTicket(lotto);
+      if (rank) counts[rank]++;
     });
 
-    const prize = Object.entries(result).reduce(
-      (acc, [rank, count]) => acc + LottoGame.prizeMap[rank] * count,
-      0
-    );
-
-    return { ...result, 상금: prize };
+    return counts;
   }
 }
 

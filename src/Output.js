@@ -21,9 +21,8 @@ class Output {
     Console.print(`6개 일치 (2,000,000,000원) - ${result["RANK_1"]}개`);
   }
 
-  static printRate(prize, budget) {
-    const rate = ((prize / budget) * 100).toFixed(1);
-    Console.print(`총 수익률은 ${rate}%입니다.`);
+  static printReturnOnInvestment(returnOnInvestment) {
+    Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`)
   }
 }
 
