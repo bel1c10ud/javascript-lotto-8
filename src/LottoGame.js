@@ -8,11 +8,11 @@ class LottoGame {
   }
 
   static prizeMap = {
-    "1등": 2000000000,
-    "2등": 30000000,
-    "3등": 1500000,
-    "4등": 50000,
-    "5등": 5000,
+    "RANK_1": 2000000000,
+    "RANK_2": 30000000,
+    "RANK_3": 1500000,
+    "RANK_4": 50000,
+    "RANK_5": 5000,
   };
 
   getRank(lotto) {
@@ -22,16 +22,16 @@ class LottoGame {
     ).length;
     const hasBonus = lottoNumbers.includes(this.#bonusNumber);
 
-    if (matchCount === 6) return "1등";
-    if (matchCount === 5 && hasBonus) return "2등";
-    if (matchCount === 5) return "3등";
-    if (matchCount === 4) return "4등";
-    if (matchCount === 3) return "5등";
+    if (matchCount === 6) return "RANK_1";
+    if (matchCount === 5 && hasBonus) return "RANK_2";
+    if (matchCount === 5) return "RANK_3";
+    if (matchCount === 4) return "RANK_4";
+    if (matchCount === 3) return "RANK_5";
     return null;
   }
 
   getResult(lottos) {
-    const result = { "1등": 0, "2등": 0, "3등": 0, "4등": 0, "5등": 0 };
+    const result = { "RANK_1": 0, "RANK_2": 0, "RANK_3": 0, "RANK_4": 0, "RANK_5": 0 };
 
     lottos.forEach((lotto) => {
       const rank = this.getRank(lotto);
