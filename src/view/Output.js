@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { RANK, RANK_LABEL } from "../constants";
+import { RANK, RANK_LABEL } from "../constants.js";
 
 class Output {
   static printPurchasedLottos(tickets) {
