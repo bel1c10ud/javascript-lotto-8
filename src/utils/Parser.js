@@ -1,4 +1,4 @@
-class InputParser {
+class Parser {
   static MIN_NUMBER = 1;
   static MAX_NUMBER = 45;
   static NUMBERS_COUNT = 6;
@@ -19,7 +19,7 @@ class InputParser {
       throw new Error("[ERROR] 구입 금액은 0보다 커야 합니다.");
     }
 
-    if (budget % InputParser.PRICE !== 0) {
+    if (budget % Parser.PRICE !== 0) {
       throw new Error("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
     }
 
@@ -37,8 +37,8 @@ class InputParser {
       winningNumbers.some(
         (number) =>
           isNaN(number) ||
-          number < InputParser.MIN_NUMBER ||
-          number > InputParser.MAX_NUMBER ||
+          number < Parser.MIN_NUMBER ||
+          number > Parser.MAX_NUMBER ||
           !Number.isInteger(number)
       )
     ) {
@@ -47,11 +47,11 @@ class InputParser {
       );
     }
 
-    if (winningNumbers.length !== InputParser.NUMBERS_COUNT) {
+    if (winningNumbers.length !== Parser.NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 6자리여야 합니다.");
     }
 
-    if (new Set(winningNumbers).size !== InputParser.NUMBERS_COUNT) {
+    if (new Set(winningNumbers).size !== Parser.NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 중복될 수 없습니다.");
     }
 
@@ -67,8 +67,8 @@ class InputParser {
 
     if (
       Number.isNaN(bonusNumber) ||
-      bonusNumber < InputParser.MIN_NUMBER ||
-      bonusNumber > InputParser.MAX_NUMBER ||
+      bonusNumber < Parser.MIN_NUMBER ||
+      bonusNumber > Parser.MAX_NUMBER ||
       !Number.isInteger(bonusNumber)
     ) {
       throw new Error(
@@ -84,4 +84,4 @@ class InputParser {
   }
 }
 
-export default InputParser;
+export default Parser;

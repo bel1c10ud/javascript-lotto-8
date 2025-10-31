@@ -1,7 +1,7 @@
-import Input from "./Input.js";
-import Output from "./Output.js";
-import LottoTicket from "./LottoTicket.js";
-import LottoGame from "./LottoGame.js";
+import Input from "./view/Input.js";
+import Output from "./view/Output.js";
+import LottoTicket from "./model/LottoTicket.js";
+import LottoGame from "./model/LottoGame.js";
 
 class App {
   async run() {

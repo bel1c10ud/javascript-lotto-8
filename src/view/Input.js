@@ -1,12 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
-import InputParser from "./InputParser.js";
+import Parser from "../utils/Parser.js";
 
 class Input {
   static async getBudgetAsync() {
     while (true) {
       try {
         const budgetStr = await this.readBudgetAsync();
-        const budget = InputParser.parseBudget(budgetStr);
+        const budget = Parser.parseBudget(budgetStr);
 
         Console.print("");
 
@@ -22,7 +22,7 @@ class Input {
       try {
         const winningNumbersStr = await this.readWinningNumbersAsync();
         const winningNumbers =
-          InputParser.parseWinningNumbers(winningNumbersStr);
+          Parser.parseWinningNumbers(winningNumbersStr);
 
         Console.print("");
 
@@ -37,7 +37,7 @@ class Input {
     while (true) {
       try {
         const bonusNumberStr = await this.readBonusNumberAsync();
-        const bonusNumber = InputParser.parseBonusNumber(
+        const bonusNumber = Parser.parseBonusNumber(
           bonusNumberStr,
           winningNumbers
         );
