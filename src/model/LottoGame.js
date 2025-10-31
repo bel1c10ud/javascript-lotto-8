@@ -1,15 +1,9 @@
-class LottoGame {
-  static prizeMap = {
-    RANK_1: 2000000000,
-    RANK_2: 30000000,
-    RANK_3: 1500000,
-    RANK_4: 50000,
-    RANK_5: 5000,
-  };
+import { RANK, PRIZE_MAP } from "../constants.js";
 
+class LottoGame {
   static calculatePrize(result) {
     return Object.entries(result).reduce(
-      (acc, [rank, count]) => acc + LottoGame.prizeMap[rank] * count,
+      (acc, [rank, count]) => acc + PRIZE_MAP[rank] * count,
       0
     );
   }
@@ -33,16 +27,22 @@ class LottoGame {
     ).length;
     const hasBonus = lottoNumbers.includes(this.#bonusNumber);
 
-    if (matchCount === 6) return "RANK_1";
-    if (matchCount === 5 && hasBonus) return "RANK_2";
-    if (matchCount === 5) return "RANK_3";
-    if (matchCount === 4) return "RANK_4";
-    if (matchCount === 3) return "RANK_5";
+    if (matchCount === 6) return RANK.FIRST;
+    if (matchCount === 5 && hasBonus) return RANK.SECOND;
+    if (matchCount === 5) return RANK.THIRD;
+    if (matchCount === 4) return RANK.FOURTH;
+    if (matchCount === 3) return RANK.FIFTH;
     return null;
   }
 
   evaluateTickets(tickets) {
-    const counts = { RANK_1: 0, RANK_2: 0, RANK_3: 0, RANK_4: 0, RANK_5: 0 };
+    const counts = {
+      [RANK.FIRST]: 0,
+      [RANK.SECOND]: 0,
+      [RANK.THIRD]: 0,
+      [RANK.FOURTH]: 0,
+      [RANK.FIFTH]: 0,
+    };
 
     tickets.forEach((ticket) => {
       const rank = this.evaluateTicket(ticket);

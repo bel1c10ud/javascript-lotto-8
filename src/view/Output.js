@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { RANK, RANK_LABEL } from "../constants";
 
 class Output {
   static printPurchasedLottos(tickets) {
@@ -15,13 +16,11 @@ class Output {
   static printResult(result) {
     Console.print("당첨 통계");
     Console.print("---");
-    Console.print(`3개 일치 (5,000원) - ${result["RANK_5"]}개`);
-    Console.print(`4개 일치 (50,000원) - ${result["RANK_4"]}개`);
-    Console.print(`5개 일치 (1,500,000원) - ${result["RANK_3"]}개`);
-    Console.print(
-      `5개 일치, 보너스 볼 일치 (30,000,000원) - ${result["RANK_2"]}개`
-    );
-    Console.print(`6개 일치 (2,000,000,000원) - ${result["RANK_1"]}개`);
+    Object.values(RANK)
+      .reverse()
+      .forEach((rank) => {
+        Console.print(`${RANK_LABEL[rank]} - ${result[rank]}개`);
+      });
   }
 
   static printReturnOnInvestment(returnOnInvestment) {
