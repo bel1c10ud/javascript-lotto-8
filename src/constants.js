@@ -13,7 +13,7 @@ export const RANK = {
 
 export const PRIZE_MAP = {
   [RANK.FIRST]: 2_000_000_000,
-  [RANK.SECOND]: 3_000_000,
+  [RANK.SECOND]: 30_000_000,
   [RANK.THIRD]: 1_500_000,
   [RANK.FOURTH]: 50_000,
   [RANK.FIFTH]: 5_000,
