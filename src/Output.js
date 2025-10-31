@@ -1,10 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 
 class Output {
-  static printLottoCount(count) {
-    Console.print(`${count}개를 구매했습니다.`);
-  }
-
   static printPurchasedLottos(tickets) {
     Console.print(`${tickets.length}개를 구매했습니다.`);
 

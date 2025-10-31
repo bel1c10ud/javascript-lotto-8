@@ -30,19 +30,27 @@ class LottoTicket {
 
   constructor(numbers) {
     this.#validate(numbers);
-    this.#numbers = numbers.sort((a, b) => a - b);
+    this.#numbers = [...numbers].sort((a, b) => a - b);
   }
 
   #validate(numbers) {
-    if (numbers.length !== 6) {
+    if (numbers.length !== LottoTicket.NUMBERS_COUNT) {
       throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
     }
 
-    if (new Set(numbers).size !== 6) {
+    if (new Set(numbers).size !== LottoTicket.NUMBERS_COUNT) {
       throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
 
-    if (numbers.some((number) => isNaN(number) || number < 1 || number > 45)) {
+    if (
+      numbers.some(
+        (number) =>
+          isNaN(number) ||
+          number < LottoTicket.MIN_NUMBER ||
+          number > LottoTicket.MAX_NUMBER ||
+          !Number.isInteger(number)
+      )
+    ) {
       throw new Error("[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.");
     }
   }

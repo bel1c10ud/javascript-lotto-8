@@ -1,4 +1,9 @@
 class InputParser {
+  static MIN_NUMBER = 1;
+  static MAX_NUMBER = 45;
+  static NUMBERS_COUNT = 6;
+  static PRICE = 1000;
+
   static parseBudget(budgetStr) {
     if (!budgetStr || budgetStr.trim() === "") {
       throw new Error("[ERROR] 구입 금액이 입력되지 않았습니다.");
@@ -10,11 +15,11 @@ class InputParser {
       throw new Error("[ERROR] 구입 금액은 숫자여야 합니다.");
     }
 
-    if (budget < 0) {
-      throw new Error("[ERROR] 구입 금액은 음수일 수 없습니다.");
+    if (budget <= 0) {
+      throw new Error("[ERROR] 구입 금액은 0보다 커야 합니다.");
     }
 
-    if (budget % 1000 !== 0) {
+    if (budget % InputParser.PRICE !== 0) {
       throw new Error("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
     }
 
@@ -30,7 +35,11 @@ class InputParser {
 
     if (
       winningNumbers.some(
-        (number) => isNaN(number) || number < 1 || number > 45
+        (number) =>
+          isNaN(number) ||
+          number < InputParser.MIN_NUMBER ||
+          number > InputParser.MAX_NUMBER ||
+          !Number.isInteger(number)
       )
     ) {
       throw new Error(
@@ -38,11 +47,11 @@ class InputParser {
       );
     }
 
-    if (winningNumbers.length !== 6) {
+    if (winningNumbers.length !== InputParser.NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 6자리여야 합니다.");
     }
 
-    if (new Set(winningNumbers).size !== 6) {
+    if (new Set(winningNumbers).size !== InputParser.NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 중복될 수 없습니다.");
     }
 
@@ -56,7 +65,12 @@ class InputParser {
 
     const bonusNumber = Number(bonusNumberStr);
 
-    if (isNaN(bonusNumber)) {
+    if (
+      Number.isNaN(bonusNumber) ||
+      bonusNumber < InputParser.MIN_NUMBER ||
+      bonusNumber > InputParser.MAX_NUMBER ||
+      !Number.isInteger(bonusNumber)
+    ) {
       throw new Error(
         "[ERROR] 보너스 번호는 1부터 45 사이의 숫자만 입력할 수 있습니다."
       );
