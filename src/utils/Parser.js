@@ -1,9 +1,11 @@
-class Parser {
-  static MIN_NUMBER = 1;
-  static MAX_NUMBER = 45;
-  static NUMBERS_COUNT = 6;
-  static PRICE = 1000;
+import {
+  LOTTO_MIN_NUMBER,
+  LOTTO_MAX_NUMBER,
+  LOTTO_PRICE,
+  LOTTO_NUMBERS_COUNT,
+} from "../constants.js";
 
+class Parser {
   static parseBudget(budgetStr) {
     if (!budgetStr || budgetStr.trim() === "") {
       throw new Error("[ERROR] 구입 금액이 입력되지 않았습니다.");
@@ -19,7 +21,7 @@ class Parser {
       throw new Error("[ERROR] 구입 금액은 0보다 커야 합니다.");
     }
 
-    if (budget % Parser.PRICE !== 0) {
+    if (budget % LOTTO_PRICE !== 0) {
       throw new Error("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
     }
 
@@ -37,8 +39,8 @@ class Parser {
       winningNumbers.some(
         (number) =>
           isNaN(number) ||
-          number < Parser.MIN_NUMBER ||
-          number > Parser.MAX_NUMBER ||
+          number < LOTTO_MIN_NUMBER ||
+          number > LOTTO_MAX_NUMBER ||
           !Number.isInteger(number)
       )
     ) {
@@ -47,11 +49,11 @@ class Parser {
       );
     }
 
-    if (winningNumbers.length !== Parser.NUMBERS_COUNT) {
+    if (winningNumbers.length !== LOTTO_NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 6자리여야 합니다.");
     }
 
-    if (new Set(winningNumbers).size !== Parser.NUMBERS_COUNT) {
+    if (new Set(winningNumbers).size !== LOTTO_NUMBERS_COUNT) {
       throw new Error("[ERROR] 당첨 번호는 중복될 수 없습니다.");
     }
 
@@ -67,8 +69,8 @@ class Parser {
 
     if (
       Number.isNaN(bonusNumber) ||
-      bonusNumber < Parser.MIN_NUMBER ||
-      bonusNumber > Parser.MAX_NUMBER ||
+      bonusNumber < LOTTO_MIN_NUMBER ||
+      bonusNumber > LOTTO_MAX_NUMBER ||
       !Number.isInteger(bonusNumber)
     ) {
       throw new Error(
