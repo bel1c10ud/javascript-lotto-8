@@ -3,7 +3,7 @@ import Parser from "../utils/Parser.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "../constants.js";
 
 class Input {
-  static async getBudgetAsync() {
+  async getBudgetAsync() {
     while (true) {
       try {
         const budgetStr = await this.readBudgetAsync();
@@ -18,7 +18,7 @@ class Input {
     }
   }
 
-  static async getWinningNumbersAsync() {
+  async getWinningNumbersAsync() {
     while (true) {
       try {
         const winningNumbersStr = await this.readWinningNumbersAsync();
@@ -33,7 +33,7 @@ class Input {
     }
   }
 
-  static async getBonusNumberAsync(winningNumbers) {
+  async getBonusNumberAsync(winningNumbers) {
     while (true) {
       try {
         const bonusNumberStr = await this.readBonusNumberAsync();
@@ -51,7 +51,7 @@ class Input {
     }
   }
 
-  static async readBudgetAsync() {
+  async readBudgetAsync() {
     try {
       const budget = await Console.readLineAsync(INPUT_MESSAGE.BUDGET);
       return budget;
@@ -60,7 +60,7 @@ class Input {
     }
   }
 
-  static async readWinningNumbersAsync() {
+  async readWinningNumbersAsync() {
     try {
       const winningNumbers = await Console.readLineAsync(
         INPUT_MESSAGE.WINNING_NUMBERS
@@ -71,7 +71,7 @@ class Input {
     }
   }
 
-  static async readBonusNumberAsync() {
+  async readBonusNumberAsync() {
     try {
       const bonusNumber = await Console.readLineAsync(
         INPUT_MESSAGE.BONUS_NUMBER

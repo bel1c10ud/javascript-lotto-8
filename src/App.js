@@ -5,15 +5,17 @@ import LottoStore from "./model/LottoStore.js";
 
 class App {
   async run() {
-    const budget = await Input.getBudgetAsync();
-
+    const input = new Input();
+    const output = new Output();
     const lottoStore = new LottoStore();
+
+    const budget = await input.getBudgetAsync();
     const tickets = lottoStore.publishTicketsByBudget(budget);
 
-    Output.printPurchasedTickets(tickets);
+    output.printPurchasedTickets(tickets);
 
-    const winningNumbers = await Input.getWinningNumbersAsync();
-    const bonusNumber = await Input.getBonusNumberAsync(winningNumbers);
+    const winningNumbers = await input.getWinningNumbersAsync();
+    const bonusNumber = await input.getBonusNumberAsync(winningNumbers);
 
     const lottoGame = new LottoGame(winningNumbers, bonusNumber);
     const result = lottoGame.evaluateTickets(tickets);
@@ -21,7 +23,7 @@ class App {
     const counts = result.getCounts();
     const returnOnInvestment = result.getReturnOnInvestment(budget);
 
-    Output.printStatistics(counts, returnOnInvestment);
+    output.printStatistics(counts, returnOnInvestment);
   }
 }
 

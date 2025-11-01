@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { RANK_PRINT_ORDER, RANK_LABEL } from "../constants.js";
 
 class Output {
-  static printPurchasedTickets(tickets) {
+  printPurchasedTickets(tickets) {
     Console.print(`${tickets.length}개를 구매했습니다.`);
 
     tickets.forEach((ticket) => {
@@ -13,7 +13,7 @@ class Output {
     Console.print("");
   }
 
-  static printStatistics(counts, returnOnInvestment) {
+  printStatistics(counts, returnOnInvestment) {
     Console.print("당첨 통계");
     Console.print("---");
 
