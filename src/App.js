@@ -9,7 +9,7 @@ class App {
 
     const tickets = LottoTicket.publishByBudget(budget);
 
-    Output.printPurchasedLottos(tickets);
+    Output.printPurchasedTickets(tickets);
 
     const winningNumbers = await Input.getWinningNumbersAsync();
     const bonusNumber = await Input.getBonusNumberAsync(winningNumbers);

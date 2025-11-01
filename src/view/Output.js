@@ -2,7 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 import { RANK, RANK_LABEL } from "../constants.js";
 
 class Output {
-  static printPurchasedLottos(tickets) {
+  static printPurchasedTickets(tickets) {
     Console.print(`${tickets.length}개를 구매했습니다.`);
 
     tickets.forEach((ticket) => {
