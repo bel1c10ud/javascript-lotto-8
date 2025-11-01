@@ -17,14 +17,10 @@ class App {
     const lottoGame = new LottoGame(winningNumbers, bonusNumber);
     const result = lottoGame.evaluateTickets(tickets);
 
-    const prize = LottoGame.calculatePrize(result);
-    const returnOnInvestment = LottoGame.calculateReturnOnInvestment(
-      prize,
-      budget
-    );
+    const counts = result.getCounts();
+    const returnOnInvestment = result.getReturnOnInvestment(budget);
 
-    Output.printResult(result);
-    Output.printReturnOnInvestment(returnOnInvestment);
+    Output.printStatistics(counts, returnOnInvestment);
   }
 }
 

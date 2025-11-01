@@ -1,17 +1,7 @@
-import { RANK, PRIZE_MAP } from "../constants.js";
+import LottoResult from "./LottoResult.js";
+import { RANK } from "../constants.js";
 
 class LottoGame {
-  static calculatePrize(result) {
-    return Object.entries(result).reduce(
-      (acc, [rank, count]) => acc + PRIZE_MAP[rank] * count,
-      0
-    );
-  }
-
-  static calculateReturnOnInvestment(prize, budget) {
-    return (prize / budget) * 100;
-  }
-
   #winningNumbers;
   #bonusNumber;
 
@@ -49,7 +39,7 @@ class LottoGame {
       if (rank) counts[rank]++;
     });
 
-    return counts;
+    return new LottoResult(counts);
   }
 }
 

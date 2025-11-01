@@ -13,17 +13,14 @@ class Output {
     Console.print("");
   }
 
-  static printResult(result) {
+  static printStatistics(counts, returnOnInvestment) {
     Console.print("당첨 통계");
     Console.print("---");
     Object.values(RANK)
       .reverse()
       .forEach((rank) => {
-        Console.print(`${RANK_LABEL[rank]} - ${result[rank]}개`);
+        Console.print(`${RANK_LABEL[rank]} - ${counts[rank]}개`);
       });
-  }
-
-  static printReturnOnInvestment(returnOnInvestment) {
     Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
   }
 }
