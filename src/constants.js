@@ -19,6 +19,14 @@ export const PRIZE_MAP = {
   [RANK.FIFTH]: 5_000,
 };
 
+export const RANK_PRINT_ORDER = [
+  RANK.FIFTH,
+  RANK.FOURTH,
+  RANK.THIRD,
+  RANK.SECOND,
+  RANK.FIRST,
+];
+
 export const RANK_LABEL = {
   [RANK.FIFTH]: "3개 일치 (5,000원)",
   [RANK.FOURTH]: "4개 일치 (50,000원)",

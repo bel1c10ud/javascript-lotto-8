@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { RANK, RANK_LABEL } from "../constants.js";
+import { RANK_PRINT_ORDER, RANK_LABEL } from "../constants.js";
 
 class Output {
   static printPurchasedTickets(tickets) {
@@ -16,11 +16,11 @@ class Output {
   static printStatistics(counts, returnOnInvestment) {
     Console.print("당첨 통계");
     Console.print("---");
-    Object.values(RANK)
-      .reverse()
-      .forEach((rank) => {
-        Console.print(`${RANK_LABEL[rank]} - ${counts[rank]}개`);
-      });
+
+    RANK_PRINT_ORDER.forEach((rank) => {
+      Console.print(`${RANK_LABEL[rank]} - ${counts[rank]}개`);
+    });
+
     Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
   }
 }
