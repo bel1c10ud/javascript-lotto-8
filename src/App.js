@@ -1,13 +1,14 @@
 import Input from "./view/Input.js";
 import Output from "./view/Output.js";
-import LottoTicket from "./model/LottoTicket.js";
 import LottoGame from "./model/LottoGame.js";
+import LottoStore from "./model/LottoStore.js";
 
 class App {
   async run() {
     const budget = await Input.getBudgetAsync();
 
-    const tickets = LottoTicket.publishByBudget(budget);
+    const lottoStore = new LottoStore();
+    const tickets = lottoStore.publishTicketsByBudget(budget);
 
     Output.printPurchasedTickets(tickets);
 

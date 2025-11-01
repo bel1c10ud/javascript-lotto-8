@@ -1,33 +1,11 @@
-import { Random } from "@woowacourse/mission-utils";
 import {
   LOTTO_MIN_NUMBER,
   LOTTO_MAX_NUMBER,
-  LOTTO_PRICE,
   LOTTO_NUMBERS_COUNT,
   ERROR_MESSAGE,
 } from "../constants.js";
 
 class LottoTicket {
-  static publish() {
-    const randomNumbers = Random.pickUniqueNumbersInRange(
-      LOTTO_MIN_NUMBER,
-      LOTTO_MAX_NUMBER,
-      LOTTO_NUMBERS_COUNT
-    );
-    return new LottoTicket(randomNumbers);
-  }
-
-  static publishByBudget(budget) {
-    const tickets = [];
-    const count = budget / LOTTO_PRICE;
-
-    for (let i = 0; i < count; i++) {
-      tickets.push(LottoTicket.publish());
-    }
-
-    return tickets;
-  }
-
   #numbers;
 
   constructor(numbers) {
