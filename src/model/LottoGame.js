@@ -26,13 +26,10 @@ class LottoGame {
   }
 
   evaluateTickets(tickets) {
-    const counts = {
-      [RANK.FIRST]: 0,
-      [RANK.SECOND]: 0,
-      [RANK.THIRD]: 0,
-      [RANK.FOURTH]: 0,
-      [RANK.FIFTH]: 0,
-    };
+    const counts = Object.values(RANK).reduce((acc, rank) => {
+      acc[rank] = 0;
+      return acc;
+    }, {});
 
     tickets.forEach((ticket) => {
       const rank = this.evaluateTicket(ticket);
