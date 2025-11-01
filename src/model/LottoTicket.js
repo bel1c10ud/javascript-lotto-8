@@ -47,7 +47,7 @@ class LottoTicket {
     if (
       numbers.some(
         (number) =>
-          isNaN(number) ||
+          Number.isNaN(number) ||
           number < LOTTO_MIN_NUMBER ||
           number > LOTTO_MAX_NUMBER ||
           !Number.isInteger(number)

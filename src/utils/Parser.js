@@ -14,7 +14,7 @@ class Parser {
 
     const budget = Number(budgetStr);
 
-    if (isNaN(budget)) {
+    if (Number.isNaN(budget)) {
       throw new Error(ERROR_MESSAGE.BUDGET.NOT_NUMBER);
     }
 
@@ -39,7 +39,7 @@ class Parser {
     if (
       winningNumbers.some(
         (number) =>
-          isNaN(number) ||
+          Number.isNaN(number) ||
           number < LOTTO_MIN_NUMBER ||
           number > LOTTO_MAX_NUMBER ||
           !Number.isInteger(number)
