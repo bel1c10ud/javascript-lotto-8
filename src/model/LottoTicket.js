@@ -4,6 +4,7 @@ import {
   LOTTO_MAX_NUMBER,
   LOTTO_PRICE,
   LOTTO_NUMBERS_COUNT,
+  ERROR_MESSAGE,
 } from "../constants.js";
 
 class LottoTicket {
@@ -36,11 +37,11 @@ class LottoTicket {
 
   #validate(numbers) {
     if (numbers.length !== LOTTO_NUMBERS_COUNT) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_COUNT);
     }
 
     if (new Set(numbers).size !== LOTTO_NUMBERS_COUNT) {
-      throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
+      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_UNIQUE);
     }
 
     if (
@@ -52,7 +53,7 @@ class LottoTicket {
           !Number.isInteger(number)
       )
     ) {
-      throw new Error("[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.");
+      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_IN_RANGE);
     }
   }
 

@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import Parser from "../utils/Parser.js";
+import { INPUT_MESSAGE, ERROR_MESSAGE } from "../constants.js";
 
 class Input {
   static async getBudgetAsync() {
@@ -21,8 +22,7 @@ class Input {
     while (true) {
       try {
         const winningNumbersStr = await this.readWinningNumbersAsync();
-        const winningNumbers =
-          Parser.parseWinningNumbers(winningNumbersStr);
+        const winningNumbers = Parser.parseWinningNumbers(winningNumbersStr);
 
         Console.print("");
 
@@ -53,32 +53,32 @@ class Input {
 
   static async readBudgetAsync() {
     try {
-      const budget = await Console.readLineAsync("구입금액을 입력해 주세요.\n");
+      const budget = await Console.readLineAsync(INPUT_MESSAGE.BUDGET);
       return budget;
     } catch (error) {
-      throw new Error("[ERROR] 구입 금액을 입력받던 중 오류가 발생했습니다.");
+      throw new Error(ERROR_MESSAGE.BUDGET.FAIL_INPUT);
     }
   }
 
   static async readWinningNumbersAsync() {
     try {
       const winningNumbers = await Console.readLineAsync(
-        "당첨 번호를 입력해 주세요.\n"
+        INPUT_MESSAGE.WINNING_NUMBERS
       );
       return winningNumbers;
     } catch (error) {
-      throw new Error("[ERROR] 당첨 번호를 입력받던 중 오류가 발생했습니다.");
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.FAIL_INPUT);
     }
   }
 
   static async readBonusNumberAsync() {
     try {
       const bonusNumber = await Console.readLineAsync(
-        "보너스 번호를 입력해 주세요.\n"
+        INPUT_MESSAGE.BONUS_NUMBER
       );
       return bonusNumber;
     } catch (error) {
-      throw new Error("[ERROR] 보너스 번호를 입력받던 중 오류가 발생했습니다.");
+      throw new Error(ERROR_MESSAGE.BONUS_NUMBER.FAIL_INPUT);
     }
   }
 }

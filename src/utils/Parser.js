@@ -3,26 +3,27 @@ import {
   LOTTO_MAX_NUMBER,
   LOTTO_PRICE,
   LOTTO_NUMBERS_COUNT,
+  ERROR_MESSAGE,
 } from "../constants.js";
 
 class Parser {
   static parseBudget(budgetStr) {
     if (!budgetStr || budgetStr.trim() === "") {
-      throw new Error("[ERROR] 구입 금액이 입력되지 않았습니다.");
+      throw new Error(ERROR_MESSAGE.BUDGET.EMPTY);
     }
 
     const budget = Number(budgetStr);
 
     if (isNaN(budget)) {
-      throw new Error("[ERROR] 구입 금액은 숫자여야 합니다.");
+      throw new Error(ERROR_MESSAGE.BUDGET.NOT_NUMBER);
     }
 
     if (budget <= 0) {
-      throw new Error("[ERROR] 구입 금액은 0보다 커야 합니다.");
+      throw new Error(ERROR_MESSAGE.BUDGET.NOT_POSITIVE);
     }
 
     if (budget % LOTTO_PRICE !== 0) {
-      throw new Error("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
+      throw new Error(ERROR_MESSAGE.BUDGET.NOT_MULTIPLE_OF_1000);
     }
 
     return budget;
@@ -30,7 +31,7 @@ class Parser {
 
   static parseWinningNumbers(winningNumbersStr) {
     if (!winningNumbersStr || winningNumbersStr.trim() === "") {
-      throw new Error("[ERROR] 당첨 번호가 입력되지 않았습니다.");
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.EMPTY);
     }
 
     const winningNumbers = winningNumbersStr.split(",").map(Number);
@@ -44,17 +45,15 @@ class Parser {
           !Number.isInteger(number)
       )
     ) {
-      throw new Error(
-        "[ERROR] 당첨 번호는 1부터 45 사이의 숫자만 입력할 수 있습니다."
-      );
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.NOT_IN_RANGE);
     }
 
     if (winningNumbers.length !== LOTTO_NUMBERS_COUNT) {
-      throw new Error("[ERROR] 당첨 번호는 6자리여야 합니다.");
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.NOT_COUNT);
     }
 
     if (new Set(winningNumbers).size !== LOTTO_NUMBERS_COUNT) {
-      throw new Error("[ERROR] 당첨 번호는 중복될 수 없습니다.");
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.NOT_UNIQUE);
     }
 
     return winningNumbers;
@@ -62,7 +61,7 @@ class Parser {
 
   static parseBonusNumber(bonusNumberStr, winningNumbers) {
     if (!bonusNumberStr || bonusNumberStr.trim() === "") {
-      throw new Error("[ERROR] 보너스 번호가 입력되지 않았습니다.");
+      throw new Error(ERROR_MESSAGE.BONUS_NUMBER.EMPTY);
     }
 
     const bonusNumber = Number(bonusNumberStr);
@@ -73,13 +72,11 @@ class Parser {
       bonusNumber > LOTTO_MAX_NUMBER ||
       !Number.isInteger(bonusNumber)
     ) {
-      throw new Error(
-        "[ERROR] 보너스 번호는 1부터 45 사이의 숫자만 입력할 수 있습니다."
-      );
+      throw new Error(ERROR_MESSAGE.BONUS_NUMBER.NOT_IN_RANGE);
     }
 
     if (winningNumbers && winningNumbers.includes(bonusNumber)) {
-      throw new Error("[ERROR] 당첨 번호와 보너스 번호는 중복 될 수 없습니다.");
+      throw new Error(ERROR_MESSAGE.BONUS_NUMBER.NOT_UNIQUE);
     }
 
     return bonusNumber;
