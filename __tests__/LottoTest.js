@@ -19,4 +19,9 @@ describe("Lotto 클래스 테스트", () => {
       new Lotto([1, 2, 3, 4, 5, 5]);
     }).toThrow(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_UNIQUE);
   });
+
+  test("로또 번호가 오름차순으로 정렬된다.", () => {
+    const ticket = new Lotto([6, 5, 4, 3, 2, 1]);
+    expect(ticket.getNumbers()).toEqual([1, 2, 3, 4, 5, 6]);
+  });
 });
