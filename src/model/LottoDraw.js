@@ -1,7 +1,7 @@
 import LottoResult from "./LottoResult.js";
 import { RANK } from "../constants.js";
 
-class LottoGame {
+class LottoDraw {
   #winningNumbers;
   #bonusNumber;
 
@@ -38,4 +38,4 @@ class LottoGame {
   }
 }
 
-export default LottoGame;
+export default LottoDraw;

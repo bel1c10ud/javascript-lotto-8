@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import LottoTicket from "./LottoTicket.js";
+import Lotto from "./Lotto.js";
 import {
   LOTTO_MIN_NUMBER,
   LOTTO_MAX_NUMBER,
@@ -23,7 +23,7 @@ class LottoStore {
 
   publishTicket() {
     const randomLottoNumbers = this.#randomLottoNumbersGenerator();
-    return new LottoTicket(randomLottoNumbers);
+    return new Lotto(randomLottoNumbers);
   }
 
   publishTicketsByBudget(budget) {

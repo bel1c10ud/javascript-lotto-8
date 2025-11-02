@@ -1,4 +1,4 @@
-import LottoGame from "./model/LottoGame.js";
+import LottoDraw from "./model/LottoDraw.js";
 
 class App {
   constructor({ input, output, lottoStore }) {
@@ -15,8 +15,8 @@ class App {
     const winningNumbers = await this.input.getWinningNumbersAsync();
     const bonusNumber = await this.input.getBonusNumberAsync(winningNumbers);
 
-    const lottoGame = new LottoGame(winningNumbers, bonusNumber);
-    const result = lottoGame.evaluateTickets(tickets);
+    const lottoDraw = new LottoDraw(winningNumbers, bonusNumber);
+    const result = lottoDraw.evaluateTickets(tickets);
 
     const counts = result.getCounts();
     const returnOnInvestment = result.getReturnOnInvestment(budget);

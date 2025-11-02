@@ -5,7 +5,7 @@ import {
   ERROR_MESSAGE,
 } from "../constants.js";
 
-class LottoTicket {
+class Lotto {
   #numbers;
 
   constructor(numbers) {
@@ -50,4 +50,4 @@ class LottoTicket {
   }
 }
 
-export default LottoTicket;
+export default Lotto;
