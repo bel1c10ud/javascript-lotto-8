@@ -11,7 +11,7 @@ export const RANK = {
   FIFTH: "RANK_5",
 };
 
-export const PRIZE_MAP = {
+export const RANK_PRIZE = {
   [RANK.FIRST]: 2_000_000_000,
   [RANK.SECOND]: 30_000_000,
   [RANK.THIRD]: 1_500_000,

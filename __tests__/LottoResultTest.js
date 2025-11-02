@@ -1,5 +1,5 @@
 import LottoResult from "../src/model/LottoResult.js";
-import { PRIZE_MAP, RANK } from "../src/constants.js";
+import { RANK_PRIZE, RANK } from "../src/constants.js";
 
 describe("LottoResult 클래스 테스트", () => {
   const ALL_RANKS_ONE_COUNTS = {
@@ -30,11 +30,11 @@ describe("LottoResult 클래스 테스트", () => {
     test("당첨 결과에 따라 상금을 계산한다.", () => {
       const lottoResult = new LottoResult(ALL_RANKS_ONE_COUNTS);
       expect(lottoResult.getPrize()).toBe(
-        PRIZE_MAP[RANK.FIRST] +
-          PRIZE_MAP[RANK.SECOND] +
-          PRIZE_MAP[RANK.THIRD] +
-          PRIZE_MAP[RANK.FOURTH] +
-          PRIZE_MAP[RANK.FIFTH]
+        RANK_PRIZE[RANK.FIRST] +
+          RANK_PRIZE[RANK.SECOND] +
+          RANK_PRIZE[RANK.THIRD] +
+          RANK_PRIZE[RANK.FOURTH] +
+          RANK_PRIZE[RANK.FIFTH]
       );
     });
 

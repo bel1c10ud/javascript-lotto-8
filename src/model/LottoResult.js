@@ -1,4 +1,4 @@
-import { PRIZE_MAP } from "../constants.js";
+import { RANK_PRIZE } from "../constants.js";
 
 class LottoResult {
   #counts;
@@ -9,7 +9,7 @@ class LottoResult {
 
   getPrize() {
     return Object.entries(this.#counts).reduce(
-      (acc, [rank, count]) => acc + PRIZE_MAP[rank] * count,
+      (acc, [rank, count]) => acc + RANK_PRIZE[rank] * count,
       0
     );
   }
