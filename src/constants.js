@@ -52,19 +52,19 @@ export const ERROR_MESSAGE = {
   WINNING_NUMBERS: {
     FAIL_INPUT: "[ERROR] 당첨 번호를 입력받던 중 오류가 발생했습니다.",
     EMPTY: "[ERROR] 당첨 번호가 입력되지 않았습니다.",
-    NOT_IN_RANGE: "[ERROR] 당첨 번호는 1에서 45 사이의 숫자여야 합니다.",
+    NOT_IN_RANGE: "[ERROR] 당첨 번호는 1에서 45 사이의 정수여야 합니다.",
     NOT_COUNT: "[ERROR] 당첨 번호는 6개여야 합니다.",
     NOT_UNIQUE: "[ERROR] 당첨 번호는 중복될 수 없습니다.",
   },
   BONUS_NUMBER: {
     FAIL_INPUT: "[ERROR] 보너스 번호를 입력받던 중 오류가 발생했습니다.",
     EMPTY: "[ERROR] 보너스 번호가 입력되지 않았습니다.",
-    NOT_IN_RANGE: "[ERROR] 보너스 번호는 1에서 45 사이의 숫자여야 합니다.",
+    NOT_IN_RANGE: "[ERROR] 보너스 번호는 1에서 45 사이의 정수여야 합니다.",
     NOT_UNIQUE: "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.",
   },
   LOTTO_NUMBERS: {
     NOT_COUNT: "[ERROR] 로또 번호는 6개여야 합니다.",
     NOT_UNIQUE: "[ERROR] 로또 번호는 중복될 수 없습니다.",
-    NOT_IN_RANGE: "[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.",
+    NOT_IN_RANGE: "[ERROR] 로또 번호는 1에서 45 사이의 정수여야 합니다.",
   },
 };

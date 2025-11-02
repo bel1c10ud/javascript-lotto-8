@@ -45,12 +45,12 @@ describe("LottoResult 클래스 테스트", () => {
   });
 
   describe("getReturnOnInvestment 메서드 테스트", () => {
-    test("투자금이 주어지면 수익률을 계산한다.", () => {
+    test("구입 금액이 주어지면 수익률을 계산한다.", () => {
       const lottoResult = new LottoResult(FIFTH_ONLY_COUNTS);
       expect(lottoResult.getReturnOnInvestment(5000)).toBe(100);
     });
 
-    test("투자금이 0인 경우 0을 반환한다.", () => {
+    test("구입 금액이 0인 경우 0을 반환한다.", () => {
       const lottoResult = new LottoResult(FIFTH_ONLY_COUNTS);
       expect(lottoResult.getReturnOnInvestment(0)).toBe(0);
     });
