@@ -8,21 +8,22 @@ import {
 } from "../constants.js";
 
 class LottoStore {
-  #randomUniqueNumbersGenerator;
+  #randomLottoNumbersGenerator;
 
-  constructor(randomUniqueNumbersGenerator) {
-    this.#randomUniqueNumbersGenerator =
-      randomUniqueNumbersGenerator || Random.pickUniqueNumbersInRange;
+  constructor(randomLottoNumbersGenerator) {
+    this.#randomLottoNumbersGenerator =
+      randomLottoNumbersGenerator ||
+      (() =>
+        Random.pickUniqueNumbersInRange(
+          LOTTO_MIN_NUMBER,
+          LOTTO_MAX_NUMBER,
+          LOTTO_NUMBERS_COUNT
+        ));
   }
 
   publishTicket() {
-    const randomNumbers = this.#randomUniqueNumbersGenerator(
-      LOTTO_MIN_NUMBER,
-      LOTTO_MAX_NUMBER,
-      LOTTO_NUMBERS_COUNT
-    );
-
-    return new LottoTicket(randomNumbers);
+    const randomLottoNumbers = this.#randomLottoNumbersGenerator();
+    return new LottoTicket(randomLottoNumbers);
   }
 
   publishTicketsByBudget(budget) {

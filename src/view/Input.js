@@ -3,17 +3,25 @@ import Parser from "../utils/Parser.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "../constants.js";
 
 class Input {
+  #print;
+  #readLineAsync;
+
+  constructor(print, readLineAsync) {
+    this.#print = print || Console.print;
+    this.#readLineAsync = readLineAsync || Console.readLineAsync;
+  }
+
   async getBudgetAsync() {
     while (true) {
       try {
-        const budgetStr = await this.readBudgetAsync();
+        const budgetStr = await this.#readBudgetAsync();
         const budget = Parser.parseBudget(budgetStr);
 
-        Console.print("");
+        this.#print("");
 
         return budget;
       } catch (error) {
-        Console.print(error.message);
+        this.#print(error.message);
       }
     }
   }
@@ -21,14 +29,14 @@ class Input {
   async getWinningNumbersAsync() {
     while (true) {
       try {
-        const winningNumbersStr = await this.readWinningNumbersAsync();
+        const winningNumbersStr = await this.#readWinningNumbersAsync();
         const winningNumbers = Parser.parseWinningNumbers(winningNumbersStr);
 
-        Console.print("");
+        this.#print("");
 
         return winningNumbers;
       } catch (error) {
-        Console.print(error.message);
+        this.#print(error.message);
       }
     }
   }
@@ -36,33 +44,33 @@ class Input {
   async getBonusNumberAsync(winningNumbers) {
     while (true) {
       try {
-        const bonusNumberStr = await this.readBonusNumberAsync();
+        const bonusNumberStr = await this.#readBonusNumberAsync();
         const bonusNumber = Parser.parseBonusNumber(
           bonusNumberStr,
           winningNumbers
         );
 
-        Console.print("");
+        this.#print("");
 
         return bonusNumber;
       } catch (error) {
-        Console.print(error.message);
+        this.#print(error.message);
       }
     }
   }
 
-  async readBudgetAsync() {
+  async #readBudgetAsync() {
     try {
-      const budget = await Console.readLineAsync(INPUT_MESSAGE.BUDGET);
+      const budget = await this.#readLineAsync(INPUT_MESSAGE.BUDGET);
       return budget;
     } catch (error) {
       throw new Error(ERROR_MESSAGE.BUDGET.FAIL_INPUT);
     }
   }
 
-  async readWinningNumbersAsync() {
+  async #readWinningNumbersAsync() {
     try {
-      const winningNumbers = await Console.readLineAsync(
+      const winningNumbers = await this.#readLineAsync(
         INPUT_MESSAGE.WINNING_NUMBERS
       );
       return winningNumbers;
@@ -71,11 +79,9 @@ class Input {
     }
   }
 
-  async readBonusNumberAsync() {
+  async #readBonusNumberAsync() {
     try {
-      const bonusNumber = await Console.readLineAsync(
-        INPUT_MESSAGE.BONUS_NUMBER
-      );
+      const bonusNumber = await this.#readLineAsync(INPUT_MESSAGE.BONUS_NUMBER);
       return bonusNumber;
     } catch (error) {
       throw new Error(ERROR_MESSAGE.BONUS_NUMBER.FAIL_INPUT);

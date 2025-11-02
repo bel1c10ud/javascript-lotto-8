@@ -2,26 +2,32 @@ import { Console } from "@woowacourse/mission-utils";
 import { RANK_PRINT_ORDER, RANK_LABEL } from "../constants.js";
 
 class Output {
+  #print;
+
+  constructor(print) {
+    this.#print = print || Console.print;
+  }
+
   printPurchasedTickets(tickets) {
-    Console.print(`${tickets.length}개를 구매했습니다.`);
+    this.#print(`${tickets.length}개를 구매했습니다.`);
 
     tickets.forEach((ticket) => {
       const lottoNumbers = ticket.getNumbers();
-      Console.print(`[${lottoNumbers.join(", ")}]`);
+      this.#print(`[${lottoNumbers.join(", ")}]`);
     });
 
-    Console.print("");
+    this.#print("");
   }
 
   printStatistics(counts, returnOnInvestment) {
-    Console.print("당첨 통계");
-    Console.print("---");
+    this.#print("당첨 통계");
+    this.#print("---");
 
     RANK_PRINT_ORDER.forEach((rank) => {
-      Console.print(`${RANK_LABEL[rank]} - ${counts[rank]}개`);
+      this.#print(`${RANK_LABEL[rank]} - ${counts[rank]}개`);
     });
 
-    Console.print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
+    this.#print(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
   }
 }
 
