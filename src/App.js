@@ -10,7 +10,6 @@ class App {
   async run() {
     const budget = await this.input.getBudgetAsync();
     const tickets = this.lottoStore.publishTicketsByBudget(budget);
-
     this.output.printPurchasedTickets(tickets);
 
     const winningNumbers = await this.input.getWinningNumbersAsync();
@@ -21,7 +20,6 @@ class App {
 
     const counts = result.getCounts();
     const returnOnInvestment = result.getReturnOnInvestment(budget);
-
     this.output.printStatistics(counts, returnOnInvestment);
   }
 }

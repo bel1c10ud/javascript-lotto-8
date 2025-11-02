@@ -45,10 +45,7 @@ class Input {
     while (true) {
       try {
         const bonusNumberStr = await this.#readBonusNumberAsync();
-        const bonusNumber = Parser.parseBonusNumber(
-          bonusNumberStr,
-          winningNumbers
-        );
+        const bonusNumber = Parser.parseBonusNumber(bonusNumberStr, winningNumbers);
 
         this.#print("");
 
@@ -70,9 +67,7 @@ class Input {
 
   async #readWinningNumbersAsync() {
     try {
-      const winningNumbers = await this.#readLineAsync(
-        INPUT_MESSAGE.WINNING_NUMBERS
-      );
+      const winningNumbers = await this.#readLineAsync(INPUT_MESSAGE.WINNING_NUMBERS);
       return winningNumbers;
     } catch (error) {
       throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.FAIL_INPUT);

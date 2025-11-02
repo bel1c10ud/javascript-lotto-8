@@ -12,9 +12,7 @@ class LottoGame {
 
   evaluateTicket(ticket) {
     const lottoNumbers = ticket.getNumbers();
-    const matchCount = lottoNumbers.filter((number) =>
-      this.#winningNumbers.includes(number)
-    ).length;
+    const matchCount = lottoNumbers.filter((number) => this.#winningNumbers.includes(number)).length;
     const hasBonus = lottoNumbers.includes(this.#bonusNumber);
 
     if (matchCount === 6) return RANK.FIRST;
