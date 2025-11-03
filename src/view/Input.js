@@ -7,8 +7,8 @@ class Input {
   #readLineAsync;
 
   constructor(print, readLineAsync) {
-    this.#print = print || Console.print;
-    this.#readLineAsync = readLineAsync || Console.readLineAsync;
+    this.#print = print ?? Console.print;
+    this.#readLineAsync = readLineAsync ?? Console.readLineAsync;
   }
 
   async getBudgetAsync() {

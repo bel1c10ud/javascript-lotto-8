@@ -1,10 +1,13 @@
+import Input from "./view/Input.js";
+import Output from "./view/Output.js";
+import LottoStore from "./model/LottoStore.js";
 import LottoDraw from "./model/LottoDraw.js";
 
 class App {
-  constructor({ input, output, lottoStore }) {
-    this.input = input;
-    this.output = output;
-    this.lottoStore = lottoStore;
+  constructor({ input, output, lottoStore } = {}) {
+    this.input = input ?? new Input();
+    this.output = output ?? new Output();
+    this.lottoStore = lottoStore ?? new LottoStore();
   }
 
   async run() {

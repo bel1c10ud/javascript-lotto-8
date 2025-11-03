@@ -5,7 +5,7 @@ class Output {
   #print;
 
   constructor(print) {
-    this.#print = print || Console.print;
+    this.#print = print ?? Console.print;
   }
 
   printPurchasedTickets(tickets) {

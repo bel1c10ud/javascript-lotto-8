@@ -1,7 +1,4 @@
 import App from "../src/App.js";
-import Input from "../src/view/Input.js";
-import Output from "../src/view/Output.js";
-import LottoStore from "../src/model/LottoStore.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -38,11 +35,7 @@ const runException = async (input) => {
   mockQuestions([input, ...INPUT_NUMBERS_TO_END]);
 
   // when
-  const app = new App({
-    input: new Input(),
-    output: new Output(),
-    lottoStore: new LottoStore(),
-  });
+  const app = new App();
   await app.run();
 
   // then
@@ -71,11 +64,7 @@ describe("로또 테스트", () => {
     mockQuestions(["8000", "1,2,3,4,5,6", "7"]);
 
     // when
-    const app = new App({
-      input: new Input(),
-      output: new Output(),
-      lottoStore: new LottoStore(),
-    });
+    const app = new App();
     await app.run();
 
     // then
