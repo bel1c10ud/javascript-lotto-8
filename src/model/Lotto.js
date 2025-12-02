@@ -1,7 +1,5 @@
-import {
-  LOTTO,
-  ERROR_MESSAGE,
-} from "../constants.js";
+import Validator from "../utils/Validator.js";
+import { ERROR_MESSAGE } from "../constants.js";
 
 class Lotto {
   #numbers;
@@ -16,35 +14,13 @@ class Lotto {
   }
 
   #validate(numbers) {
-    this.#validateCount(numbers);
-    this.#validateRange(numbers);
-    this.#validateUnique(numbers);
-  }
-
-  #validateCount(numbers) {
-    if (numbers.length !== LOTTO.NUMBERS_COUNT) {
-      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_COUNT);
-    }
-  }
-
-  #validateRange(numbers) {
-    if (
-      numbers.some(
-        (number) =>
-          Number.isNaN(number) ||
-          !Number.isInteger(number) ||
-          number < LOTTO.MIN_NUMBER ||
-          number > LOTTO.MAX_NUMBER
-      )
-    ) {
-      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_IN_RANGE);
-    }
-  }
-
-  #validateUnique(numbers) {
-    if (new Set(numbers).size !== LOTTO.NUMBERS_COUNT) {
-      throw new Error(ERROR_MESSAGE.LOTTO_NUMBERS.NOT_UNIQUE);
-    }
+    Validator.validateCount(numbers, ERROR_MESSAGE.LOTTO_NUMBERS.NOT_COUNT);
+    numbers.forEach((number) => {
+      Validator.validateNumber(number, ERROR_MESSAGE.LOTTO_NUMBERS.NOT_IN_RANGE);
+      Validator.validateInteger(number, ERROR_MESSAGE.LOTTO_NUMBERS.NOT_IN_RANGE);
+      Validator.validateRange(number, ERROR_MESSAGE.LOTTO_NUMBERS.NOT_IN_RANGE);
+    });
+    Validator.validateUnique(numbers, ERROR_MESSAGE.LOTTO_NUMBERS.NOT_UNIQUE);
   }
 }
 
