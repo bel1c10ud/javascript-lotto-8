@@ -11,7 +11,7 @@ class LottoStore {
       (() => Random.pickUniqueNumbersInRange(LOTTO.MIN_NUMBER, LOTTO.MAX_NUMBER, LOTTO.NUMBERS_COUNT));
   }
 
-  publishTicket() {
+  #publishTicket() {
     const randomLottoNumbers = this.#randomLottoNumbersGenerator();
     return new Lotto(randomLottoNumbers);
   }
@@ -21,7 +21,7 @@ class LottoStore {
     const count = budget / LOTTO.PRICE;
 
     for (let i = 0; i < count; i++) {
-      tickets.push(this.publishTicket());
+      tickets.push(this.#publishTicket());
     }
 
     return tickets;

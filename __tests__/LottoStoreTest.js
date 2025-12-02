@@ -1,15 +1,6 @@
-import Lotto from "../src/model/Lotto.js";
 import LottoStore from "../src/model/LottoStore.js";
 
 describe("LottoStore 클래스 테스트", () => {
-  describe("publishTicket() 메서드 테스트", () => {
-    test("로또 한장을 발행한다.", () => {
-      const lottoStore = new LottoStore();
-      const lotto = lottoStore.publishTicket();
-      expect(lotto).toBeInstanceOf(Lotto);
-    });
-  });
-
   describe("publishTicketsByBudget() 메서드 테스트", () => {
     test("구입 금액만큼 로또를 발행한다.", () => {
       const lottoStore = new LottoStore();
