@@ -1,18 +1,20 @@
+import Lotto from "./Lotto.js";
 import LottoResult from "./LottoResult.js";
-import { RANK } from "../constants.js";
+import { ERROR_MESSAGE, RANK } from "../constants.js";
+import Validator from "../utils/Validator.js";
 
-class LottoDraw {
-  #winningNumbers;
+class LottoDraw extends Lotto {
   #bonusNumber;
 
-  constructor(winningNumbers, bonusNumber) {
-    this.#winningNumbers = winningNumbers;
+  constructor(numbers, bonusNumber) {
+    super(numbers);
+    Validator.validateUnique([...this.getNumbers(), bonusNumber], ERROR_MESSAGE.BONUS_NUMBER.NOT_UNIQUE);
     this.#bonusNumber = bonusNumber;
   }
 
   evaluateTicket(ticket) {
     const lottoNumbers = ticket.getNumbers();
-    const matchCount = lottoNumbers.filter((number) => this.#winningNumbers.includes(number)).length;
+    const matchCount = lottoNumbers.filter((number) => this.getNumbers().includes(number)).length;
     const hasBonus = lottoNumbers.includes(this.#bonusNumber);
 
     if (matchCount === 6) return RANK.FIRST;
