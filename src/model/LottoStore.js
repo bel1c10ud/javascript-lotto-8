@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
 import Lotto from "./Lotto.js";
-import { LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_PRICE, LOTTO_NUMBERS_COUNT } from "../constants.js";
+import { LOTTO } from "../constants.js";
 
 class LottoStore {
   #randomLottoNumbersGenerator;
@@ -8,7 +8,7 @@ class LottoStore {
   constructor(randomLottoNumbersGenerator) {
     this.#randomLottoNumbersGenerator =
       randomLottoNumbersGenerator ??
-      (() => Random.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBERS_COUNT));
+      (() => Random.pickUniqueNumbersInRange(LOTTO.MIN_NUMBER, LOTTO.MAX_NUMBER, LOTTO.NUMBERS_COUNT));
   }
 
   publishTicket() {
@@ -18,7 +18,7 @@ class LottoStore {
 
   publishTicketsByBudget(budget) {
     const tickets = [];
-    const count = budget / LOTTO_PRICE;
+    const count = budget / LOTTO.PRICE;
 
     for (let i = 0; i < count; i++) {
       tickets.push(this.publishTicket());

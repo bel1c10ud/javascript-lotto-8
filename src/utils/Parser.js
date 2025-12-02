@@ -1,8 +1,5 @@
 import {
-  LOTTO_MIN_NUMBER,
-  LOTTO_MAX_NUMBER,
-  LOTTO_PRICE,
-  LOTTO_NUMBERS_COUNT,
+  LOTTO,
   ERROR_MESSAGE,
 } from "../constants.js";
 
@@ -16,7 +13,7 @@ class Parser {
     this.#validatePositive(budget, ERROR_MESSAGE.BUDGET.NOT_POSITIVE);
     this.#validateMultiple(
       budget,
-      LOTTO_PRICE,
+      LOTTO.PRICE,
       ERROR_MESSAGE.BUDGET.NOT_MULTIPLE_OF_1000
     );
 
@@ -79,15 +76,15 @@ class Parser {
     if (
       Number.isNaN(input) ||
       !Number.isInteger(input) ||
-      input < LOTTO_MIN_NUMBER ||
-      input > LOTTO_MAX_NUMBER
+      input < LOTTO.MIN_NUMBER ||
+      input > LOTTO.MAX_NUMBER
     ) {
       throw new Error(errorMessage);
     }
   }
 
   static #validateCount(input, errorMessage) {
-    if (input.length !== LOTTO_NUMBERS_COUNT) {
+    if (input.length !== LOTTO.NUMBERS_COUNT) {
       throw new Error(errorMessage);
     }
   }
