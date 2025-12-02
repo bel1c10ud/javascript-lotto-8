@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import AppError from "../error/AppError.js";
 import Parser from "../utils/Parser.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "../constants.js";
 
@@ -61,7 +62,7 @@ class Input {
       const budget = await this.#readLineAsync(INPUT_MESSAGE.BUDGET);
       return budget;
     } catch (error) {
-      throw new Error(ERROR_MESSAGE.BUDGET.FAIL_INPUT);
+      throw new AppError(ERROR_MESSAGE.BUDGET.FAIL_INPUT);
     }
   }
 
@@ -70,7 +71,7 @@ class Input {
       const winningNumbers = await this.#readLineAsync(INPUT_MESSAGE.WINNING_NUMBERS);
       return winningNumbers;
     } catch (error) {
-      throw new Error(ERROR_MESSAGE.WINNING_NUMBERS.FAIL_INPUT);
+      throw new AppError(ERROR_MESSAGE.WINNING_NUMBERS.FAIL_INPUT);
     }
   }
 
@@ -79,7 +80,7 @@ class Input {
       const bonusNumber = await this.#readLineAsync(INPUT_MESSAGE.BONUS_NUMBER);
       return bonusNumber;
     } catch (error) {
-      throw new Error(ERROR_MESSAGE.BONUS_NUMBER.FAIL_INPUT);
+      throw new AppError(ERROR_MESSAGE.BONUS_NUMBER.FAIL_INPUT);
     }
   }
 }
