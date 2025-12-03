@@ -9,7 +9,7 @@ class Validator {
   }
 
   static validateNumber(input, errorMessage) {
-    if (Number.isNaN(input)) {
+    if (Number.isNaN(Number(input))) {
       throw new AppError(errorMessage);
     }
   }
