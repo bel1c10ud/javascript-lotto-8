@@ -1,4 +1,4 @@
-import LottoStore from "../src/model/LottoStore.js";
+import LottoStore from "../src/model/service/LottoStore";
 
 describe("LottoStore 클래스 테스트", () => {
   describe("publishTicketsByBudget() 메서드 테스트", () => {

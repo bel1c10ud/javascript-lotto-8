@@ -1,4 +1,4 @@
-import LottoResult from "../src/model/LottoResult.js";
+import LottoResult from "../src/model/entity/LottoResult.js";
 import { RANK_PRIZE, RANK } from "../src/constants.js";
 
 describe("LottoResult 클래스 테스트", () => {
