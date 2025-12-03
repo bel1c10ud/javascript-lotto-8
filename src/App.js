@@ -1,7 +1,8 @@
 import Input from "./view/Input.js";
 import Output from "./view/Output.js";
-import LottoStore from "./model/LottoStore.js";
-import LottoDraw from "./model/LottoDraw.js";
+import LottoDraw from "./model/entity/LottoDraw.js";
+import LottoStore from "./model/service/LottoStore.js";
+import LottoEvaluator from "./model/service/LottoEvaluator.js";
 
 class App {
   constructor({ input, output, lottoStore } = {}) {
@@ -19,7 +20,7 @@ class App {
     const bonusNumber = await this.input.getBonusNumberAsync(winningNumbers);
 
     const lottoDraw = new LottoDraw(winningNumbers, bonusNumber);
-    const result = lottoDraw.evaluateTickets(tickets);
+    const result = LottoEvaluator.evaluateTickets(lottoDraw, tickets);
 
     const counts = result.getCounts();
     const returnOnInvestment = result.getReturnOnInvestment(budget);

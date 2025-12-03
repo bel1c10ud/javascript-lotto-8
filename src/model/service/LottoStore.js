@@ -1,6 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
-import Lotto from "./Lotto.js";
-import { LOTTO } from "../constants.js";
+import Lotto from "../entity/Lotto.js";
+import { LOTTO } from "../../constants.js";
 
 class LottoStore {
   #randomLottoNumbersGenerator;

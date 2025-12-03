@@ -1,4 +1,4 @@
-import { RANK_PRIZE } from "../constants.js";
+import { RANK_PRIZE } from "../../constants.js";
 
 class LottoResult {
   #counts;
